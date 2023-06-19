@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #e4e3e8;
+  color: #222128;
+}
+
+#landing-page {
+  height: 100vh;
+  background-image: url("../assets/images/sanctuary.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#landing-page:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  opacity: 80%;
+}
+#landing-page > * {
+  z-index: 1;
+}
+#landing-page #logo-container {
+  width: 200px;
+}
+#landing-page #logo-container img {
+  width: 100%;
+  height: 100%;
+}
+#landing-page #name-container {
+  width: 250px;
+  margin-top: 10px;
+}
+#landing-page #name-container img {
+  width: 100%;
+  height: 100%;
+}
+#landing-page #socials {
+  display: flex;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  margin-top: 30px;
+}
+#landing-page #socials a {
+  margin: 0 3px;
+}
+#landing-page #socials a img {
+  width: 50px;
+}
+
+/*# sourceMappingURL=style.css.map */
