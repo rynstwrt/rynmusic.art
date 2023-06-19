@@ -12,10 +12,6 @@ html, body {
 body {
   background-color: #e4e3e8;
   color: #222128;
-}
-
-#landing-page {
-  height: 100vh;
   background-image: url("../assets/images/sanctuary.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -25,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#landing-page:after {
+body:before {
   content: "";
   position: absolute;
   top: 0;
@@ -33,37 +29,32 @@ body {
   bottom: 0;
   left: 0;
   background-color: black;
-  opacity: 80%;
+  opacity: 0.925;
 }
-#landing-page > * {
+
+#logo-container {
+  width: 200px;
   z-index: 1;
 }
-#landing-page #logo-container {
-  width: 200px;
-}
-#landing-page #logo-container img {
+#logo-container img {
   width: 100%;
   height: 100%;
 }
-#landing-page #name-container {
-  width: 250px;
-  margin-top: 10px;
-}
-#landing-page #name-container img {
-  width: 100%;
-  height: 100%;
-}
-#landing-page #socials {
+
+#socials {
+  z-index: 1;
   display: flex;
   list-style: none;
   font-family: "Poppins", sans-serif;
-  margin-top: 30px;
+  margin-top: 50px;
 }
-#landing-page #socials a {
+#socials a {
   margin: 0 3px;
+  color: #ffffff;
+  text-decoration: none;
 }
-#landing-page #socials a img {
-  width: 50px;
+#socials a:hover {
+  color: #cd4a09;
 }
 
 /*# sourceMappingURL=style.css.map */
