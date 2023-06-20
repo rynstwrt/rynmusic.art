@@ -51,7 +51,7 @@ body
     }
 }
 
-header, #logo-container, #equalizer
+header, main, #equalizer
 {
     z-index: 1;
 }
@@ -100,14 +100,33 @@ header
     }
 }
 
-#logo-container
+main
 {
     width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     img
     {
         width: 100%;
         height: 100%;
+    }
+
+    #play-pause-button
+    {
+        transition: color .2s ease-in-out, letter-spacing .2s ease-in-out;
+        letter-spacing: 1px;
+        font-weight: $fw-3;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 25px;
+
+        &:hover
+        {
+            color: $color5;
+            text-decoration: underline;
+        }
     }
 }
 
@@ -119,18 +138,4 @@ header
     position: fixed;
     bottom: 0;
     font-size: 15px;
-
-    #play-pause-button
-    {
-        transition: color .2s ease-in-out, letter-spacing .2s ease-in-out;
-        letter-spacing: 2px;
-        font-weight: $fw-4;
-        cursor: pointer;
-
-        &:hover
-        {
-            color: $color5;
-            text-decoration: underline;
-        }
-    }
 }

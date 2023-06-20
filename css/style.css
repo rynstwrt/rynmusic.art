@@ -33,7 +33,7 @@ body:before {
   opacity: 0.925;
 }
 
-header, #logo-container, #equalizer {
+header, main, #equalizer {
   z-index: 1;
 }
 
@@ -67,12 +67,27 @@ header #socials li a svg:hover {
   fill: #f84b15;
 }
 
-#logo-container {
+main {
   width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-#logo-container img {
+main img {
   width: 100%;
   height: 100%;
+}
+main #play-pause-button {
+  transition: color 0.2s ease-in-out, letter-spacing 0.2s ease-in-out;
+  letter-spacing: 1px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 25px;
+}
+main #play-pause-button:hover {
+  color: #f84b15;
+  text-decoration: underline;
 }
 
 #equalizer {
@@ -82,16 +97,6 @@ header #socials li a svg:hover {
   position: fixed;
   bottom: 0;
   font-size: 15px;
-}
-#equalizer #play-pause-button {
-  transition: color 0.2s ease-in-out, letter-spacing 0.2s ease-in-out;
-  letter-spacing: 2px;
-  font-weight: 500;
-  cursor: pointer;
-}
-#equalizer #play-pause-button:hover {
-  color: #f84b15;
-  text-decoration: underline;
 }
 
 /*# sourceMappingURL=style.css.map */
