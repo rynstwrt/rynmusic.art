@@ -33,6 +33,10 @@ let songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
 audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
 
 
+backwardsButton.textContent = `-${SKIP_AMOUNT_SECONDS}s`;
+forwardButton.textContent = `${SKIP_AMOUNT_SECONDS}s`;
+
+
 function playOrPause()
 {
     nowPlaying.textContent = "Loading...";
@@ -63,7 +67,8 @@ function playOrPause()
 
 function skipBackwardsOrForward(isBackward)
 {
-    audio.currentTime += isBackward ? -SKIP_AMOUNT_SECONDS : SKIP_AMOUNT_SECONDS;
+    audio.currentTime += isBackward ? SKIP_AMOUNT_SECONDS : -SKIP_AMOUNT_SECONDS;
+    console.log(audio.currentTime)
 }
 
 
