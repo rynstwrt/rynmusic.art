@@ -2,8 +2,14 @@ $color1: #e4e3e8;
 $color2: #ffffff;
 $color3: #222128;
 $color4: black;
+$color5: #f84b15;
 
-$font-1: "Poppins", sans-serif;
+$font: "Poppins", sans-serif;
+$fw-1: 100;
+$fw-2: 200;
+$fw-3: 400;
+$fw-4: 500;
+$fw-5: 700;
 
 *
 {
@@ -21,7 +27,6 @@ html, body
 body
 {
     background-color: $color1;
-    color: $color3;
     background-image: url("../assets/images/sanctuary.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -30,6 +35,8 @@ body
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: $font;
+    color: $color2;
 
     &:before
     {
@@ -44,10 +51,58 @@ body
     }
 }
 
+header, #logo-container, #equalizer
+{
+    z-index: 1;
+}
+
+header
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    h1
+    {
+        letter-spacing: 1px;
+        font-weight: $fw-5;
+    }
+
+    #socials
+    {
+        display: flex;
+        list-style: none;
+
+        li
+        {
+            a
+            {
+                margin-left: 13px;
+
+                svg
+                {
+                    width: 33px;
+                    fill: $color2;
+                    transition: fill .2s ease-in-out;
+
+                    &:hover
+                    {
+                        fill: $color5;
+                    }
+                }
+            }
+        }
+    }
+}
+
 #logo-container
 {
     width: 200px;
-    z-index: 1;
 
     img
     {
@@ -56,23 +111,26 @@ body
     }
 }
 
-#socials
+#equalizer
 {
-    z-index: 1;
     display: flex;
-    list-style: none;
-    font-family: $font-1;
-    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    font-size: 15px;
 
-    a
+    #play-pause-button
     {
-        margin: 0 3px;
-        color: $color2;
-        text-decoration: none;
+        transition: color .2s ease-in-out, letter-spacing .2s ease-in-out;
+        letter-spacing: 2px;
+        font-weight: $fw-4;
+        cursor: pointer;
 
         &:hover
         {
-            color: #cd4a09;
+            color: $color5;
+            text-decoration: underline;
         }
     }
 }
