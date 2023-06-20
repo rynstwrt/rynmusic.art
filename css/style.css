@@ -33,7 +33,7 @@ body:before {
   bottom: 0;
   left: 0;
   background-color: black;
-  opacity: 0.925;
+  opacity: 0.9;
 }
 
 header, #logo-container, #controls, #equalizer, #now-playing-container {
@@ -48,7 +48,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 25px;
 }
 header h1 {
   letter-spacing: 1px;
@@ -60,7 +60,7 @@ header #socials {
   list-style: none;
 }
 header #socials li a {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 header #socials li a svg {
   width: 33px;
@@ -106,7 +106,7 @@ header #socials li a svg:hover {
   text-decoration: underline;
 }
 
-#now-playing-container {
+#now-playing {
   margin-top: 15px;
   opacity: 0.5;
   font-family: "Poppins", sans-serif;

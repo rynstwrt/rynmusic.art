@@ -10,6 +10,7 @@ const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3", "4AM.mp3", "ADeeperLove.mp3",
 const TRACK_NAMES = ["It Be Like That", "4 AM", "A Deeper Love", "Ceremonial Funk",
     "Down", "GameBitch™", "Gutted", "It'll Be Fine", "It's Always the Same",
     "Maybe It'll Get Better", "Piano Beat", "Transfiguration"];
+const TITLE_PREFIX = "Ryn - ";
 
 
 const backwardsButton = document.querySelector("#backward-button");
@@ -34,6 +35,8 @@ audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
 
 function playOrPause()
 {
+    nowPlaying.textContent = "Loading...";
+
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
     {
@@ -41,9 +44,26 @@ function playOrPause()
         el.style.display = audio.paused ? "block" : "none";
     }
 
-    nowPlaying.textContent = TRACK_NAMES[songIndex];
     playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
-    audio.paused ? audio.play() : audio.pause();
+
+    if (audio.paused)
+    {
+        audio.play().then(() =>
+        {
+            console.log("DONE")
+            nowPlaying.textContent = TITLE_PREFIX + TRACK_NAMES[songIndex];
+        });
+    }
+    else
+    {
+        audio.pause();
+    }
+}
+
+
+function skipBackwardsOrForward(isBackward)
+{
+    audio.currentTime += isBackward ? -SKIP_AMOUNT_SECONDS : SKIP_AMOUNT_SECONDS;
 }
 
 
@@ -57,7 +77,7 @@ function prevOrNextSong(isPrev)
         songIndex = 0;
 
     audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
-    nowPlaying.textContent = TRACK_NAMES[songIndex];
+    nowPlaying.textContent = TITLE_PREFIX + TRACK_NAMES[songIndex];
     audio.play();
 }
 playPauseButton.addEventListener("click", () => playOrPause());
@@ -68,19 +88,15 @@ window.addEventListener("keydown", event =>
     if (event.key === " ")
         playOrPause();
     else if (event.key === "ArrowLeft" && !audio.paused)
-    {
-        prevOrNextSong(true);
-    }
+        skipBackwardsOrForward(true);
     else if (event.key === "ArrowRight" && !audio.paused)
-    {
-        prevOrNextSong(false);
-    }
+        skipBackwardsOrForward(false);
 });
 
 
 prevButton.addEventListener("click", () => prevOrNextSong(true));
-backwardsButton.addEventListener("click", () => audio.currentTime -= SKIP_AMOUNT_SECONDS);
-forwardButton.addEventListener("click", () => audio.currentTime += SKIP_AMOUNT_SECONDS);
+backwardsButton.addEventListener("click", () => skipBackwardsOrForward(false));
+forwardButton.addEventListener("click", () => skipBackwardsOrForward(true));
 nextButton.addEventListener("click", () => prevOrNextSong(false));
 
 

@@ -49,7 +49,7 @@ body
         bottom: 0;
         left: 0;
         background-color: black;
-        opacity: .925;
+        opacity: .9;
     }
 }
 
@@ -67,7 +67,7 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 25px;
 
     h1
     {
@@ -85,7 +85,7 @@ header
         {
             a
             {
-                margin-left: 15px;
+                margin-left: 20px;
 
                 svg
                 {
@@ -147,7 +147,7 @@ header
     }
 }
 
-#now-playing-container
+#now-playing
 {
     margin-top: 15px;
     opacity: 0.5;
