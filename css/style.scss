@@ -4,11 +4,14 @@ $color3: #222128;
 $color4: black;
 $color5: #f84b15;
 
+$font-1: "Poppins", sans-serif;
 $fw-1: 100;
 $fw-2: 200;
 $fw-3: 400;
 $fw-4: 500;
 $fw-5: 700;
+
+$font-2: "Orbit", sans-serif;
 
 *
 {
@@ -35,7 +38,7 @@ body
     justify-content: center;
     align-items: center;
     color: $color2;
-    font-family: "Orbit", sans-serif;
+    font-family: $font-1;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -49,11 +52,11 @@ body
         bottom: 0;
         left: 0;
         background-color: black;
-        opacity: .9;
+        opacity: .92;
     }
 }
 
-header, #logo-container, #controls, #equalizer, #now-playing-container
+body > *
 {
     z-index: 1;
 }
@@ -73,7 +76,7 @@ header
     {
         letter-spacing: 1px;
         font-weight: $fw-5;
-        font-family: "Poppins", sans-serif;
+        font-family: $font-1;
     }
 
     #socials
@@ -132,7 +135,7 @@ header
 
     a
     {
-        transition: color .2s ease-in-out, letter-spacing .2s ease-in-out;
+        transition: color .2s ease-in-out;
         letter-spacing: 1px;
         font-weight: $fw-3;
         cursor: pointer;
@@ -142,7 +145,16 @@ header
         &:hover
         {
             color: $color5;
-            text-decoration: underline;
+        }
+
+        &:before
+        {
+            content: "[";
+        }
+
+        &:after
+        {
+            content: "]";
         }
     }
 }
@@ -150,10 +162,28 @@ header
 #now-playing
 {
     margin-top: 15px;
-    opacity: 0.5;
-    font-family: "Poppins", sans-serif;
-    font-weight: $fw-2;
-    letter-spacing: 2px;
+    opacity: 0.65;
+    font-family: $font-2;
+    user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+}
+
+#progress-bar
+{
+    width: 250px;
+    height: 10px;
+    background-color: $color3;
+    border-radius: 10px;
+    margin-top: 5px;
+    overflow: hidden;
+
+    #progress-slider
+    {
+        width: 100px;
+        height: 100%;
+        background-color: $color5;
+    }
 }
 
 #equalizer

@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  font-family: "Orbit", sans-serif;
+  font-family: "Poppins", sans-serif;
   user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -33,10 +33,10 @@ body:before {
   bottom: 0;
   left: 0;
   background-color: black;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
-header, #logo-container, #controls, #equalizer, #now-playing-container {
+body > * {
   z-index: 1;
 }
 
@@ -94,7 +94,7 @@ header #socials li a svg:hover {
   z-index: 2;
 }
 #controls a {
-  transition: color 0.2s ease-in-out, letter-spacing 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
   letter-spacing: 1px;
   font-weight: 400;
   cursor: pointer;
@@ -103,15 +103,35 @@ header #socials li a svg:hover {
 }
 #controls a:hover {
   color: #f84b15;
-  text-decoration: underline;
+}
+#controls a:before {
+  content: "[";
+}
+#controls a:after {
+  content: "]";
 }
 
 #now-playing {
   margin-top: 15px;
-  opacity: 0.5;
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  letter-spacing: 2px;
+  opacity: 0.65;
+  font-family: "Orbit", sans-serif;
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+
+#progress-bar {
+  width: 250px;
+  height: 10px;
+  background-color: #222128;
+  border-radius: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+#progress-bar #progress-slider {
+  width: 100px;
+  height: 100%;
+  background-color: #f84b15;
 }
 
 #equalizer {
