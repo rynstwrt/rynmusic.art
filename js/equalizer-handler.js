@@ -25,7 +25,7 @@ let songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
 audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
 
 
-playPauseButton.addEventListener("click", () =>
+function playOrPause()
 {
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
@@ -37,7 +37,11 @@ playPauseButton.addEventListener("click", () =>
     playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
     audio.paused ? audio.currentTime = 0 : undefined;
     audio.paused ? audio.play() : audio.pause();
-});
+}
+
+
+playPauseButton.addEventListener("click", () => playOrPause());
+window.addEventListener("keydown", event => { if (event.key === " ") playOrPause(); });
 
 
 backwardsButton.addEventListener("click", () =>
