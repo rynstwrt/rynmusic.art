@@ -37,7 +37,7 @@ audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
 
 
 backwardsButton.textContent = `-${SKIP_AMOUNT_SECONDS}s`;
-forwardButton.textContent = `${SKIP_AMOUNT_SECONDS}s`;
+forwardButton.textContent = `+${SKIP_AMOUNT_SECONDS}s`;
 
 
 function playOrPause()
