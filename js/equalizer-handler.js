@@ -94,7 +94,7 @@ audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 function playOrPause()
 {
     if (audio.paused)
-        nowPlaying.textContent = "Loading...";
+        nowPlaying.textContent = "";
 
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
