@@ -19,8 +19,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", sans-serif;
   color: #ffffff;
+  font-family: "Orbit", sans-serif;
 }
 body:before {
   content: "";
@@ -50,13 +50,14 @@ header {
 header h1 {
   letter-spacing: 1px;
   font-weight: 700;
+  font-family: "Poppins", sans-serif;
 }
 header #socials {
   display: flex;
   list-style: none;
 }
 header #socials li a {
-  margin-left: 13px;
+  margin-left: 15px;
 }
 header #socials li a svg {
   width: 33px;
@@ -83,6 +84,7 @@ header #socials li a svg:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 #controls .toggleable {
   display: none;

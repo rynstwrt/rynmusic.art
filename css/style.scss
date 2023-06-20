@@ -4,7 +4,6 @@ $color3: #222128;
 $color4: black;
 $color5: #f84b15;
 
-$font: "Poppins", sans-serif;
 $fw-1: 100;
 $fw-2: 200;
 $fw-3: 400;
@@ -35,8 +34,8 @@ body
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: $font;
     color: $color2;
+    font-family: "Orbit", sans-serif;
 
     &:before
     {
@@ -71,6 +70,7 @@ header
     {
         letter-spacing: 1px;
         font-weight: $fw-5;
+        font-family: "Poppins", sans-serif;
     }
 
     #socials
@@ -82,7 +82,7 @@ header
         {
             a
             {
-                margin-left: 13px;
+                margin-left: 15px;
 
                 svg
                 {
@@ -120,6 +120,7 @@ header
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 
     .toggleable
     {

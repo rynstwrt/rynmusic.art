@@ -5,11 +5,13 @@ const BUTTON_PLAY_TEXT = "PLAY";
 const BUTTON_PAUSE_TEXT = "PAUSE";
 const SKIP_AMOUNT_SECONDS = 15;
 
+
 const backwardsButton = document.querySelector("#backward-button");
 const prevButton = document.querySelector("#prev-button");
 const playPauseButton = document.querySelector("#play-pause-button");
 const nextButton = document.querySelector("#next-button");
 const forwardButton = document.querySelector("#forward-button");
+
 
 let canvas;
 let canvasContext;
@@ -33,7 +35,7 @@ playPauseButton.addEventListener("click", () =>
     }
 
     playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
-
+    audio.paused ? audio.currentTime = 0 : undefined;
     audio.paused ? audio.play() : audio.pause();
 });
 
