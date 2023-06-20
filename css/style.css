@@ -80,24 +80,29 @@ header #socials li a svg:hover {
   border-bottom: 2px solid #ffffff;
 }
 
-#logo-container {
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#logo-container img {
-  width: 100%;
-  height: 100%;
-}
-
 .toggleable {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
-#now-playing {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main #logo-container {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main #logo-container img {
+  width: 100%;
+  height: 100%;
+}
+main #now-playing {
   margin-top: 25px;
   font-family: "Orbit", sans-serif;
   user-select: text;
@@ -106,8 +111,7 @@ header #socials li a svg:hover {
   letter-spacing: 1px;
   text-align: center;
 }
-
-#progress-bar {
+main #progress-bar {
   width: 250px;
   height: 10px;
   background-color: #222128;
@@ -115,38 +119,37 @@ header #socials li a svg:hover {
   margin-top: 5px;
   overflow: hidden;
 }
-#progress-bar #progress-slider {
+main #progress-bar #progress-slider {
   width: 100px;
   height: 100%;
   background-color: #f84b15;
 }
-
-#controls {
+main #controls {
   margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
 }
-#controls #play-pause-button svg {
+main #controls #play-pause-button svg {
   width: 22px;
 }
-#controls a {
+main #controls a {
   cursor: pointer;
   margin: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#controls a #pause-icon {
+main #controls a #pause-icon {
   display: none;
 }
-#controls a svg {
+main #controls a svg {
   width: 13px;
   fill: #ffffff;
   transition: fill 0.2s ease-in-out;
 }
-#controls a svg:hover {
+main #controls a svg:hover {
   fill: #f84b15;
 }
 

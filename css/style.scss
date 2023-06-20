@@ -120,20 +120,6 @@ header
     }
 }
 
-#logo-container
-{
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    img
-    {
-        width: 100%;
-        height: 100%;
-    }
-}
-
 .toggleable
 {
     visibility: hidden;
@@ -141,72 +127,94 @@ header
     transition: opacity .2s ease-in-out;
 }
 
-#now-playing
+main
 {
-    margin-top: 25px;
-    font-family: $font-2;
-    user-select: text;
-    -webkit-user-select: text;
-    -ms-user-select: text;
-    letter-spacing: 1px;
-    text-align: center;
-}
-
-#progress-bar
-{
-    width: 250px;
-    height: 10px;
-    background-color: $color3;
-    border-radius: 10px;
-    margin-top: 5px;
-    overflow: hidden;
-
-    #progress-slider
-    {
-        width: 100px;
-        height: 100%;
-        background-color: $color5;
-    }
-}
-
-#controls
-{
-    margin-top: 25px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 2;
 
-    #play-pause-button
+    #logo-container
     {
-        svg
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img
         {
-            width: 22px;
+            width: 100%;
+            height: 100%;
         }
     }
 
-    a
+    #now-playing
     {
-        cursor: pointer;
-        margin: 0 10px;
+        margin-top: 25px;
+        font-family: $font-2;
+        user-select: text;
+        -webkit-user-select: text;
+        -ms-user-select: text;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    #progress-bar
+    {
+        width: 250px;
+        height: 10px;
+        background-color: $color3;
+        border-radius: 10px;
+        margin-top: 5px;
+        overflow: hidden;
+
+        #progress-slider
+        {
+            width: 100px;
+            height: 100%;
+            background-color: $color5;
+        }
+    }
+
+    #controls
+    {
+        margin-top: 25px;
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 2;
 
-        #pause-icon
+        #play-pause-button
         {
-            display: none;
+            svg
+            {
+                width: 22px;
+            }
         }
 
-        svg
+        a
         {
-            width: 13px;
-            fill: $color2;
-            transition: fill .2s ease-in-out;
+            cursor: pointer;
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            &:hover
+            #pause-icon
             {
-                fill: $color5;
+                display: none;
+            }
+
+            svg
+            {
+                width: 13px;
+                fill: $color2;
+                transition: fill .2s ease-in-out;
+
+                &:hover
+                {
+                    fill: $color5;
+                }
             }
         }
     }

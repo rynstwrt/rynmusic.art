@@ -66,6 +66,8 @@ const AUDIOS = [
 ];
 
 
+const logoContainer = document.querySelector("#logo-container");
+
 const backwardsButton = document.querySelector("#backward-button");
 const prevButton = document.querySelector("#prev-button");
 const playPauseButton = document.querySelector("#play-pause-button");
@@ -91,10 +93,18 @@ let songIndex = Math.floor(Math.random() * AUDIOS.length);
 audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 
 
+
 function playOrPause()
 {
+
     if (audio.paused)
+    {
         nowPlaying.textContent = "";
+    }
+    else
+    {
+        logoContainer.style.rotateY = undefined;
+    }
 
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
@@ -211,7 +221,6 @@ function animate()
 
     const fbcArray = new Uint8Array(analyser.frequencyBinCount);
     const barCount = window.innerWidth / 2;
-
     analyser.getByteFrequencyData(fbcArray);
 
     canvasContext.clearRect(0, 0, canvas.width, canvas.height);
@@ -223,6 +232,9 @@ function animate()
         const barHeight = -(fbcArray[i] / 2);
         canvasContext.fillRect(barPos, canvas.height, barWidth, barHeight);
     }
+
+    const average = fbcArray.reduce((a, b) => a + b) / fbcArray.length;
+    logoContainer.style.transform = `scale(${1 + average / 1000})`;
 
     const percent = audio.currentTime / audio.duration;
     slider.style.width = `${sliderContainer.clientWidth * percent}px`;
