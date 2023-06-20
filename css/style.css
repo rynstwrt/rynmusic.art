@@ -83,7 +83,7 @@ header #socials li a svg:hover {
 .toggleable {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s linear;
 }
 
 main {
@@ -104,8 +104,10 @@ main #logo-container img {
   height: 100%;
 }
 main #now-playing {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
   margin-top: 25px;
-  font-family: "Orbit", sans-serif;
   user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -124,8 +126,24 @@ main #progress-bar #progress-slider {
   height: 100%;
   background-color: #f84b15;
 }
-main #controls {
+main #volume-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 25px;
+}
+main #volume-container label {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+main #volume-container label svg {
+  width: 18px;
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+main #controls {
+  margin-top: 17px;
   display: flex;
   justify-content: center;
   align-items: center;
