@@ -10,6 +10,9 @@ const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3", "4AM.mp3", "ADeeperLove.mp3",
 const TRACK_NAMES = ["It Be Like That", "4 AM", "A Deeper Love", "Ceremonial Funk",
     "Down", "GameBitch™", "Gutted", "It'll Be Fine", "It's Always the Same",
     "Maybe It'll Get Better", "Piano Beat", "Transfiguration"];
+const TRACK_YEARS = ["2023", "2022", "2022", "2021",
+    "2023", "2021", "2023", "2022", "2022",
+    "2022", "2022", "2023"];
 const TITLE_PREFIX = "Ryn - ";
 
 
@@ -55,7 +58,7 @@ function playOrPause()
         audio.play().then(() =>
         {
             console.log("DONE")
-            nowPlaying.textContent = TITLE_PREFIX + TRACK_NAMES[songIndex];
+            nowPlaying.textContent = TITLE_PREFIX + TRACK_NAMES[songIndex] + ` (${TRACK_YEARS[songIndex]})`;
         });
     }
     else
@@ -82,7 +85,7 @@ function prevOrNextSong(isPrev)
         songIndex = 0;
 
     audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
-    nowPlaying.textContent = TITLE_PREFIX + TRACK_NAMES[songIndex];
+    nowPlaying.textContent = TITLE_PREFIX + TRACK_NAMES[songIndex] + ` (${TRACK_YEARS[songIndex]})`;
     audio.play();
 }
 playPauseButton.addEventListener("click", () => playOrPause());
