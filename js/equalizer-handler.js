@@ -1,6 +1,4 @@
 const BAR_COLOR = "#f84b15";
-const BUTTON_PLAY_TEXT = "PLAY";
-const BUTTON_PAUSE_TEXT = "PAUSE";
 const SKIP_AMOUNT_SECONDS = 15;
 const TITLE_PREFIX = "Ryn - ";
 const AUDIO_PATH = "assets/audio/";
@@ -73,6 +71,10 @@ const prevButton = document.querySelector("#prev-button");
 const playPauseButton = document.querySelector("#play-pause-button");
 const nextButton = document.querySelector("#next-button");
 const forwardButton = document.querySelector("#forward-button");
+
+const playIcon = document.querySelector("#play-icon");
+const pauseIcon = document.querySelector("#pause-icon");
+
 const nowPlaying = document.querySelector("#now-playing");
 const sliderContainer = document.querySelector("#progress-bar");
 const slider = document.querySelector("#progress-slider");
@@ -89,22 +91,30 @@ let songIndex = Math.floor(Math.random() * AUDIOS.length);
 audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 
 
-backwardsButton.textContent = `-${SKIP_AMOUNT_SECONDS}s`;
-forwardButton.textContent = `+${SKIP_AMOUNT_SECONDS}s`;
-
-
 function playOrPause()
 {
-    nowPlaying.textContent = "Loading...";
+    if (audio.paused)
+        nowPlaying.textContent = "Loading...";
 
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
     {
         const el = toggleableElements[i];
-        el.style.display = audio.paused ? "block" : "none";
+
+        if (audio.paused)
+        {
+            el.style.opacity = "1";
+            el.style.visibility = "visible";
+        }
+        else
+        {
+            el.addEventListener("transitionend", () => el.style.visibility = "hidden", {once: true});
+            el.style.opacity = "0";
+        }
     }
 
-    playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
+    playIcon.style.display = audio.paused ? "none" : "block";
+    pauseIcon.style.display = audio.paused ? "block" : "none";
 
     if (audio.paused)
     {
@@ -124,7 +134,6 @@ function playOrPause()
 function skipBackwardsOrForward(isBackward)
 {
     audio.currentTime += isBackward ? SKIP_AMOUNT_SECONDS : -SKIP_AMOUNT_SECONDS;
-    console.log(audio.currentTime, audio.duration)
 }
 
 
@@ -168,8 +177,6 @@ window.addEventListener("load", () =>
 
     canvas = document.getElementById("eq-canvas");
     canvas.width = window.innerWidth;
-
-    playPauseButton.textContent = BUTTON_PLAY_TEXT;
 
     document.getElementById("audio-player").onplay = () =>
     {

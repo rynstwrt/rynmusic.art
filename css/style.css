@@ -83,41 +83,19 @@ header #socials li a svg:hover {
 }
 
 .toggleable {
-  display: none;
-}
-
-#controls {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-#controls a {
-  transition: color 0.2s ease-in-out;
-  letter-spacing: 1px;
-  font-weight: 400;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 10px;
-}
-#controls a:hover {
-  color: #f84b15;
-}
-#controls a:before {
-  content: "[";
-}
-#controls a:after {
-  content: "]";
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 #now-playing {
-  margin-top: 15px;
-  opacity: 0.65;
+  margin-top: 25px;
   font-family: "Orbit", sans-serif;
   user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 #progress-bar {
@@ -132,6 +110,35 @@ header #socials li a svg:hover {
   width: 100px;
   height: 100%;
   background-color: #f84b15;
+}
+
+#controls {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+#controls #play-pause-button svg {
+  width: 22px;
+}
+#controls a {
+  cursor: pointer;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#controls a #pause-icon {
+  display: none;
+}
+#controls a svg {
+  width: 13px;
+  fill: #ffffff;
+  transition: fill 0.2s ease-in-out;
+}
+#controls a svg:hover {
+  fill: #f84b15;
 }
 
 #equalizer {
