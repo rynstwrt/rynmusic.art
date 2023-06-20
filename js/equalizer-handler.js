@@ -23,7 +23,8 @@ const barWidth = 2;
 const audio = new Audio();
 audio.id = "audio-player";
 audio.loop = true;
-let songIndex;
+let songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
+audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
 
 
 function playOrPause()
@@ -35,15 +36,8 @@ function playOrPause()
         el.style.display = audio.paused ? "block" : "none";
     }
 
-    if (audio.paused)
-    {
-        songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
-        audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
-    }
-
     nowPlaying.textContent = TRACK_NAMES[songIndex];
     playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
-    audio.paused ? audio.currentTime = 0 : undefined;
     audio.paused ? audio.play() : audio.pause();
 }
 
