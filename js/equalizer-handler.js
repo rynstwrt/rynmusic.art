@@ -19,11 +19,6 @@ const AUDIOS = [
         year: "2022"
     },
     {
-        file: "CeremonialFunk.mp3",
-        title: "Ceremonial Funk",
-        year: "2021"
-    },
-    {
         file: "Down.mp3",
         title: "Down",
         year: "2023"
@@ -93,18 +88,10 @@ let songIndex = Math.floor(Math.random() * AUDIOS.length);
 audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 
 
-
 function playOrPause()
 {
-
     if (audio.paused)
-    {
         nowPlaying.textContent = "";
-    }
-    else
-    {
-        logoContainer.style.rotateY = undefined;
-    }
 
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
@@ -179,6 +166,17 @@ prevButton.addEventListener("click", () => prevOrNextSong(true));
 backwardsButton.addEventListener("click", () => skipBackwardsOrForward(false));
 forwardButton.addEventListener("click", () => skipBackwardsOrForward(true));
 nextButton.addEventListener("click", () => prevOrNextSong(false));
+
+
+sliderContainer.addEventListener("click", event =>
+{
+    const bounding = sliderContainer.getBoundingClientRect();
+    const x = event.clientX - bounding.left;
+
+    const newProportion = x / sliderContainer.clientWidth;
+    const time = audio.duration * newProportion;
+    audio.currentTime = time;
+});
 
 
 window.addEventListener("load", () =>
