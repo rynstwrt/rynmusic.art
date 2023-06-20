@@ -72,10 +72,12 @@ header #socials li a {
 header #socials li a svg {
   width: 40px;
   fill: #ffffff;
-  transition: fill 0.2s ease-in-out;
+  transition: fill 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+  border-bottom: 1px solid #ffffff;
 }
 header #socials li a svg:hover {
   fill: #f84b15;
+  border-bottom: 2px solid #ffffff;
 }
 
 #logo-container {

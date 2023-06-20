@@ -106,11 +106,13 @@ header
                 {
                     width: 40px;
                     fill: $color2;
-                    transition: fill .2s ease-in-out;
+                    transition: fill .2s ease-in-out, border-bottom .2s ease-in-out;
+                    border-bottom: 1px solid $color2;
 
                     &:hover
                     {
                         fill: $color5;
+                        border-bottom: 2px solid $color2;
                     }
                 }
             }
