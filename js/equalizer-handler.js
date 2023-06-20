@@ -48,39 +48,43 @@ function playOrPause()
 }
 
 
+function prevOrNextSong(isPrev)
+{
+    songIndex += isPrev ? -1 : 1;
+
+    if (songIndex < 0)
+        songIndex = AUDIO_FILE_NAMES.length - 1;
+    else if (songIndex === AUDIO_FILE_NAMES.length)
+        songIndex = 0;
+
+    audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+    nowPlaying.textContent = TRACK_NAMES[songIndex];
+    audio.play();
+}
+
+
 playPauseButton.addEventListener("click", () => playOrPause());
-window.addEventListener("keydown", event => { if (event.key === " ") playOrPause(); });
+window.addEventListener("keydown", event =>
+{
+    if (event.key === " ")
+        playOrPause();
+    else if (event.key === "ArrowLeft" && !audio.paused)
+    {
+        prevOrNextSong(true);
+    }
+    else if (event.key === "ArrowRight" && !audio.paused)
+    {
+        prevOrNextSong(false);
+    }
+});
 
 
 backwardsButton.addEventListener("click", () => audio.currentTime -= SKIP_AMOUNT_SECONDS);
 forwardButton.addEventListener("click", () => audio.currentTime += SKIP_AMOUNT_SECONDS);
 
 
-prevButton.addEventListener("click", () =>
-{
-    --songIndex;
-
-    if (songIndex < 0)
-        songIndex = AUDIO_FILE_NAMES.length - 1;
-
-    audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
-    nowPlaying.textContent = TRACK_NAMES[songIndex];
-    audio.play();
-});
-
-
-nextButton.addEventListener("click", () =>
-{
-    ++songIndex;
-
-    if (songIndex === AUDIO_FILE_NAMES.length)
-        songIndex = 0;
-
-    audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
-    nowPlaying.textContent = TRACK_NAMES[songIndex];
-    audio.play();
-});
-
+prevButton.addEventListener("click", () => prevOrNextSong(true));
+nextButton.addEventListener("click", () => prevOrNextSong(false));
 
 
 window.addEventListener("resize", () => { if (canvas) canvas.width = window.innerWidth; });
