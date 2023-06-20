@@ -18,7 +18,9 @@ let analyser;
 const barWidth = 2;
 const audio = new Audio();
 audio.id = "audio-player";
-audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[Math.floor(Math.random() * AUDIO_FILE_NAMES.length)];
+audio.loop = true;
+let songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
+audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
 
 
 playPauseButton.addEventListener("click", () =>
@@ -36,10 +38,41 @@ playPauseButton.addEventListener("click", () =>
 });
 
 
+backwardsButton.addEventListener("click", () =>
+{
+    audio.currentTime -= SKIP_AMOUNT_SECONDS;
+});
+
+
 forwardButton.addEventListener("click", () =>
 {
     audio.currentTime += SKIP_AMOUNT_SECONDS;
 });
+
+
+prevButton.addEventListener("click", () =>
+{
+    --songIndex;
+
+    if (songIndex < 0)
+        songIndex = AUDIO_FILE_NAMES.length - 1;
+
+    audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+    audio.play();
+});
+
+
+nextButton.addEventListener("click", () =>
+{
+    ++songIndex;
+
+    if (songIndex === AUDIO_FILE_NAMES.length)
+        songIndex = 0;
+
+    audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+    audio.play();
+});
+
 
 
 window.addEventListener("resize", () =>

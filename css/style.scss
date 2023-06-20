@@ -51,7 +51,7 @@ body
     }
 }
 
-header, main, #controls, #equalizer
+header, #logo-container, #controls, #equalizer
 {
     z-index: 1;
 }
@@ -100,7 +100,7 @@ header
     }
 }
 
-main
+#logo-container
 {
     width: 200px;
     display: flex;
