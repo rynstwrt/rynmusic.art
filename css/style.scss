@@ -36,6 +36,9 @@ body
     align-items: center;
     color: $color2;
     font-family: "Orbit", sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 
     &:before
     {
@@ -50,7 +53,7 @@ body
     }
 }
 
-header, #logo-container, #controls, #equalizer
+header, #logo-container, #controls, #equalizer, #now-playing-container
 {
     z-index: 1;
 }
@@ -114,6 +117,11 @@ header
     }
 }
 
+.toggleable
+{
+    display: none;
+}
+
 #controls
 {
     margin-top: 25px;
@@ -121,11 +129,6 @@ header
     justify-content: center;
     align-items: center;
     z-index: 2;
-
-    .toggleable
-    {
-        display: none;
-    }
 
     a
     {
@@ -142,6 +145,12 @@ header
             text-decoration: underline;
         }
     }
+}
+
+#now-playing-container
+{
+    margin-top: 15px;
+    opacity: 0.5;
 }
 
 #equalizer

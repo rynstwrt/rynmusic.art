@@ -1,5 +1,6 @@
 const AUDIO_PATH = "assets/audio/";
-const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3"];
+const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3", "4AM.mp3", "ADeeperLove.mp3", "CeremonialFunk.mp3", "Down.mp3", "GameBitch.mp3", "Gutted.mp3", "It'llBeFine.mp3", "It'sAlwaysTheSame.mp3", "MaybeIt'llGetBetter.mp3", "PianoBeat.mp3"];
+const TRACK_NAMES = ["It Be Like That", "4 AM", "A Deeper Love", "Ceremonial Funk", "Down", "GameBitch™", "Gutted", "It'll Be Fine", "It's Always the Same", "Maybe It'll Get Better", "Piano Beat"];
 const BAR_COLOR = "#f84b15";
 const BUTTON_PLAY_TEXT = "PLAY";
 const BUTTON_PAUSE_TEXT = "PAUSE";
@@ -11,6 +12,7 @@ const prevButton = document.querySelector("#prev-button");
 const playPauseButton = document.querySelector("#play-pause-button");
 const nextButton = document.querySelector("#next-button");
 const forwardButton = document.querySelector("#forward-button");
+const nowPlaying = document.querySelector("#now-playing");
 
 
 let canvas;
@@ -21,8 +23,7 @@ const barWidth = 2;
 const audio = new Audio();
 audio.id = "audio-player";
 audio.loop = true;
-let songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
-audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+let songIndex;
 
 
 function playOrPause()
@@ -34,6 +35,13 @@ function playOrPause()
         el.style.display = audio.paused ? "block" : "none";
     }
 
+    if (audio.paused)
+    {
+        songIndex = Math.floor(Math.random() * AUDIO_FILE_NAMES.length);
+        audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+    }
+
+    nowPlaying.textContent = TRACK_NAMES[songIndex];
     playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
     audio.paused ? audio.currentTime = 0 : undefined;
     audio.paused ? audio.play() : audio.pause();
@@ -44,16 +52,8 @@ playPauseButton.addEventListener("click", () => playOrPause());
 window.addEventListener("keydown", event => { if (event.key === " ") playOrPause(); });
 
 
-backwardsButton.addEventListener("click", () =>
-{
-    audio.currentTime -= SKIP_AMOUNT_SECONDS;
-});
-
-
-forwardButton.addEventListener("click", () =>
-{
-    audio.currentTime += SKIP_AMOUNT_SECONDS;
-});
+backwardsButton.addEventListener("click", () => audio.currentTime -= SKIP_AMOUNT_SECONDS);
+forwardButton.addEventListener("click", () => audio.currentTime += SKIP_AMOUNT_SECONDS);
 
 
 prevButton.addEventListener("click", () =>
@@ -64,6 +64,7 @@ prevButton.addEventListener("click", () =>
         songIndex = AUDIO_FILE_NAMES.length - 1;
 
     audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+    nowPlaying.textContent = TRACK_NAMES[songIndex];
     audio.play();
 });
 
@@ -76,16 +77,13 @@ nextButton.addEventListener("click", () =>
         songIndex = 0;
 
     audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[songIndex];
+    nowPlaying.textContent = TRACK_NAMES[songIndex];
     audio.play();
 });
 
 
 
-window.addEventListener("resize", () =>
-{
-    if (canvas)
-        canvas.width = window.innerWidth;
-});
+window.addEventListener("resize", () => { if (canvas) canvas.width = window.innerWidth; });
 
 
 window.addEventListener("load", () =>
