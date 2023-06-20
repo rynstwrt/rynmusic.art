@@ -3,9 +3,14 @@ const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3"];
 const BAR_COLOR = "#f84b15";
 const BUTTON_PLAY_TEXT = "PLAY";
 const BUTTON_PAUSE_TEXT = "PAUSE";
+const SKIP_AMOUNT_SECONDS = 15;
 
-
+const backwardsButton = document.querySelector("#backward-button");
+const prevButton = document.querySelector("#prev-button");
 const playPauseButton = document.querySelector("#play-pause-button");
+const nextButton = document.querySelector("#next-button");
+const forwardButton = document.querySelector("#forward-button");
+
 let canvas;
 let canvasContext;
 let context = undefined;
@@ -18,8 +23,22 @@ audio.src = AUDIO_PATH + AUDIO_FILE_NAMES[Math.floor(Math.random() * AUDIO_FILE_
 
 playPauseButton.addEventListener("click", () =>
 {
+    const toggleableElements = document.querySelectorAll(".toggleable");
+    for (let i = 0; i < toggleableElements.length; ++i)
+    {
+        const el = toggleableElements[i];
+        el.style.display = audio.paused ? "block" : "none";
+    }
+
+    playPauseButton.textContent = audio.paused ? BUTTON_PAUSE_TEXT : BUTTON_PLAY_TEXT;
+
     audio.paused ? audio.play() : audio.pause();
-    playPauseButton.textContent = audio.paused ? BUTTON_PLAY_TEXT : BUTTON_PAUSE_TEXT;
+});
+
+
+forwardButton.addEventListener("click", () =>
+{
+    audio.currentTime += SKIP_AMOUNT_SECONDS;
 });
 
 

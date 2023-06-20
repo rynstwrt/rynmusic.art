@@ -33,7 +33,7 @@ body:before {
   opacity: 0.925;
 }
 
-header, main, #equalizer {
+header, main, #controls, #equalizer {
   z-index: 1;
 }
 
@@ -77,15 +77,25 @@ main img {
   width: 100%;
   height: 100%;
 }
-main #play-pause-button {
+
+#controls {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#controls .toggleable {
+  display: none;
+}
+#controls a {
   transition: color 0.2s ease-in-out, letter-spacing 0.2s ease-in-out;
   letter-spacing: 1px;
   font-weight: 400;
   cursor: pointer;
   text-align: center;
-  margin-top: 25px;
+  margin: 0 10px;
 }
-main #play-pause-button:hover {
+#controls a:hover {
   color: #f84b15;
   text-decoration: underline;
 }

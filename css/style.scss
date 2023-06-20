@@ -51,7 +51,7 @@ body
     }
 }
 
-header, main, #equalizer
+header, main, #controls, #equalizer
 {
     z-index: 1;
 }
@@ -112,15 +112,28 @@ main
         width: 100%;
         height: 100%;
     }
+}
 
-    #play-pause-button
+#controls
+{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .toggleable
+    {
+        display: none;
+    }
+
+    a
     {
         transition: color .2s ease-in-out, letter-spacing .2s ease-in-out;
         letter-spacing: 1px;
         font-weight: $fw-3;
         cursor: pointer;
         text-align: center;
-        margin-top: 25px;
+        margin: 0 10px;
 
         &:hover
         {

@@ -3,7 +3,7 @@
 <head>
     <!--  META TAGS  -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="title" content="rynmusic.art">
     <meta name="description" content="The music portfolio of Ryn.">
     <meta name="theme-color" content="#f84b15">
@@ -83,8 +83,16 @@
 
     <main>
         <img src="../assets/images/logo.png" alt="Ryn fox logo.">
-        <a id="play-pause-button"></a>
     </main>
+
+    <div id="controls">
+        <!--        <a id="prev-button" class="toggleable">PREV</a>-->
+        <a id="backward-button" class="toggleable">-15s</a>
+        <a id="play-pause-button"></a>
+        <a id="forward-button" class="toggleable">+15s</a>
+        <!--        <a id="next-button" class="toggleable">NEXT</a>-->
+
+    </div>
 
     <div id="equalizer">
         <div id="eq-audio"></div>
