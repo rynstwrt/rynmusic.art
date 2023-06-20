@@ -1,10 +1,15 @@
-const AUDIO_PATH = "assets/audio/";
-const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3", "4AM.mp3", "ADeeperLove.mp3", "CeremonialFunk.mp3", "Down.mp3", "GameBitch.mp3", "Gutted.mp3", "It'llBeFine.mp3", "It'sAlwaysTheSame.mp3", "MaybeIt'llGetBetter.mp3", "PianoBeat.mp3"];
-const TRACK_NAMES = ["It Be Like That", "4 AM", "A Deeper Love", "Ceremonial Funk", "Down", "GameBitch™", "Gutted", "It'll Be Fine", "It's Always the Same", "Maybe It'll Get Better", "Piano Beat"];
 const BAR_COLOR = "#f84b15";
 const BUTTON_PLAY_TEXT = "PLAY";
 const BUTTON_PAUSE_TEXT = "PAUSE";
 const SKIP_AMOUNT_SECONDS = 15;
+const AUDIO_PATH = "assets/audio/";
+const AUDIO_FILE_NAMES = ["ItBeLikeThat.mp3", "4AM.mp3", "ADeeperLove.mp3",
+    "CeremonialFunk.mp3", "Down.mp3", "GameBitch.mp3", "Gutted.mp3",
+    "It'llBeFine.mp3", "It'sAlwaysTheSame.mp3", "MaybeIt'llGetBetter.mp3",
+    "PianoBeat.mp3", "Transfiguration.wav"];
+const TRACK_NAMES = ["It Be Like That", "4 AM", "A Deeper Love", "Ceremonial Funk",
+    "Down", "GameBitch™", "Gutted", "It'll Be Fine", "It's Always the Same",
+    "Maybe It'll Get Better", "Piano Beat", "Transfiguration"];
 
 
 const backwardsButton = document.querySelector("#backward-button");
@@ -55,9 +60,9 @@ function prevOrNextSong(isPrev)
     nowPlaying.textContent = TRACK_NAMES[songIndex];
     audio.play();
 }
-
-
 playPauseButton.addEventListener("click", () => playOrPause());
+
+
 window.addEventListener("keydown", event =>
 {
     if (event.key === " ")
@@ -73,15 +78,10 @@ window.addEventListener("keydown", event =>
 });
 
 
+prevButton.addEventListener("click", () => prevOrNextSong(true));
 backwardsButton.addEventListener("click", () => audio.currentTime -= SKIP_AMOUNT_SECONDS);
 forwardButton.addEventListener("click", () => audio.currentTime += SKIP_AMOUNT_SECONDS);
-
-
-prevButton.addEventListener("click", () => prevOrNextSong(true));
 nextButton.addEventListener("click", () => prevOrNextSong(false));
-
-
-window.addEventListener("resize", () => { if (canvas) canvas.width = window.innerWidth; });
 
 
 window.addEventListener("load", () =>
@@ -114,9 +114,10 @@ window.addEventListener("load", () =>
 
 function animate()
 {
-    window.RequestAnimationFrame =
-        window.requestAnimationFrame(animate) || window.msRequestAnimationFrame(animate) ||
-        window.mozRequestAnimationFrame(animate) || window.webkitRequestAnimationFrame(animate);
+    window.RequestAnimationFrame = window.requestAnimationFrame(animate)
+                                || window.msRequestAnimationFrame(animate)
+                                || window.mozRequestAnimationFrame(animate)
+                                || window.webkitRequestAnimationFrame(animate);
 
     const fbcArray = new Uint8Array(analyser.frequencyBinCount);
     const barCount = window.innerWidth / 2;
@@ -133,3 +134,6 @@ function animate()
         canvasContext.fillRect(barPos, canvas.height, barWidth, barHeight);
     }
 }
+
+
+window.addEventListener("resize", () => { if (canvas) canvas.width = window.innerWidth; });
