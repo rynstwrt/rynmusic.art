@@ -95,9 +95,6 @@ audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 
 function playOrPause()
 {
-    if (audio.paused)
-        nowPlaying.textContent = "";
-
     const toggleableElements = document.querySelectorAll(".toggleable");
     for (let i = 0; i < toggleableElements.length; ++i)
     {
@@ -141,6 +138,7 @@ function skipBackwardsOrForward(isBackward)
 
 function prevOrNextSong(isPrev)
 {
+    nowPlaying.textContent = "";
     songIndex += isPrev ? -1 : 1;
 
     if (songIndex < 0)
@@ -150,8 +148,10 @@ function prevOrNextSong(isPrev)
 
     const currentAudio = AUDIOS[songIndex];
     audio.src = AUDIO_PATH + currentAudio.file;
-    nowPlaying.textContent = TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`;
-    audio.play();
+    audio.play().then(() =>
+    {
+        nowPlaying.textContent = TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`;
+    });
 }
 playPauseButton.addEventListener("click", () => playOrPause());
 
