@@ -79,6 +79,9 @@ header #socials li a svg:hover {
   fill: #f84b15;
   border-color: #f84b15;
 }
+header #socials li:last-of-type svg {
+  max-width: 35px;
+}
 
 .toggleable {
   visibility: hidden;
