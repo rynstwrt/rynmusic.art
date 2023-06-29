@@ -118,7 +118,14 @@ function playOrPause()
     if (audio.paused)
     {
         console.log("Audio was paused, playing now.")
-        audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
+
+        if (!audio.src)
+        {
+            audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
+            console.log("set src");
+        }
+
+
         audio.play().then(() =>
         {
             const currentAudio = AUDIOS[songIndex];
