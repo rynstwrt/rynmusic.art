@@ -90,7 +90,7 @@ const barWidth = 2;
 const audio = new Audio();
 audio.id = "audio-player";
 let songIndex = Math.floor(Math.random() * AUDIOS.length);
-
+audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 
 
 function playOrPause()
@@ -117,25 +117,14 @@ function playOrPause()
 
     if (audio.paused)
     {
-        console.log("Audio was paused, playing now.")
-
-        if (!audio.src)
-        {
-            audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
-            console.log("set src");
-        }
-
-
         audio.play().then(() =>
         {
             const currentAudio = AUDIOS[songIndex];
             nowPlaying.textContent = TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`;
-            console.log("Audio is playing")
         });
     }
     else
     {
-        console.log("pausing audio")
         audio.pause();
     }
 }
