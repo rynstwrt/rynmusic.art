@@ -98,6 +98,7 @@ main #logo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: rotate(180deg);
 }
 main #logo-container img {
   width: 100%;
