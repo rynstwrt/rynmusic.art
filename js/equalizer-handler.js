@@ -238,8 +238,6 @@ function animate()
     const average = fbcArray.reduce((a, b) => a + b) / fbcArray.length;
     logoContainer.style.transform = `scale(${1 + average / 1000})`;
 
-    console.log(audio.volume)
-
     const percent = audio.currentTime / audio.duration;
     slider.style.width = `${sliderContainer.clientWidth * percent}px`;
 }
