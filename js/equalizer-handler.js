@@ -90,7 +90,7 @@ const barWidth = 2;
 const audio = new Audio();
 audio.id = "audio-player";
 let songIndex = Math.floor(Math.random() * AUDIOS.length);
-audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
+
 
 
 function playOrPause()
@@ -118,6 +118,7 @@ function playOrPause()
     if (audio.paused)
     {
         console.log("Audio was paused, playing now.")
+        audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
         audio.play().then(() =>
         {
             const currentAudio = AUDIOS[songIndex];
