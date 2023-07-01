@@ -4,49 +4,9 @@ const TITLE_PREFIX = "Ryn - ";
 const AUDIO_PATH = "assets/audio/";
 const AUDIOS = [
     {
-        file: "Transfiguration.wav",
-        title: "Transfiguration",
-        year: "2023"
-    },
-    {
-        file: "Down.mp3",
-        title: "Down",
-        year: "2023"
-    },
-    {
-        file: "Gutted.mp3",
-        title: "Gutted",
-        year: "2023"
-    },
-    {
         file: "ItBeLikeThat.mp3",
         title: "It Be Like That",
         year: "2023"
-    },
-    {
-        file: "I'mGonnaDishYouRightNow.mp3",
-        title: "I'm Gonna Dish You Right Now!",
-        year: "2023"
-    },
-    {
-        file: "It'sAlwaysTheSame.mp3",
-        title: "It's Always the Same",
-        year: "2022"
-    },
-    {
-        file: "It'llBeFine.mp3",
-        title: "It'll Be Fine",
-        year: "2022"
-    },
-    {
-        file: "PianoBeat.mp3",
-        title: "Piano Beat",
-        year: "2022"
-    },
-    {
-        file: "MaybeIt'llGetBetter.mp3",
-        title: "Maybe It'll Get Better",
-        year: "2022"
     },
     {
         file: "4AM.mp3",
@@ -59,10 +19,50 @@ const AUDIOS = [
         year: "2022"
     },
     {
+        file: "Down.mp3",
+        title: "Down",
+        year: "2023"
+    },
+    {
         file: "GameBitch.mp3",
         title: "GameBitch™",
         year: "2021"
-    }
+    },
+    {
+        file: "Gutted.mp3",
+        title: "Gutted",
+        year: "2023"
+    },
+    {
+        file: "It'llBeFine.mp3",
+        title: "It'll Be Fine",
+        year: "2022"
+    },
+    {
+        file: "It'sAlwaysTheSame.mp3",
+        title: "It's Always the Same",
+        year: "2022"
+    },
+    {
+        file: "MaybeIt'llGetBetter.mp3",
+        title: "Maybe It'll Get Better",
+        year: "2022"
+    },
+    {
+        file: "PianoBeat.mp3",
+        title: "Piano Beat",
+        year: "2022"
+    },
+    {
+        file: "Transfiguration.wav",
+        title: "Transfiguration",
+        year: "2023"
+    },
+    {
+        file: "I'mGonnaDishYouRightNow.mp3",
+        title: "I'm Gonna Dish You Right Now!",
+        year: "2023"
+    },
 ];
 
 
@@ -77,7 +77,7 @@ const forwardButton = document.querySelector("#forward-button");
 const playIcon = document.querySelector("#play-icon");
 const pauseIcon = document.querySelector("#pause-icon");
 
-const nowPlayingSelect = document.querySelector("#now-playing-select");
+const nowPlaying = document.querySelector("#now-playing");
 const sliderContainer = document.querySelector("#progress-bar");
 const slider = document.querySelector("#progress-slider");
 
@@ -91,31 +91,6 @@ const audio = new Audio();
 audio.id = "audio-player";
 let songIndex = Math.floor(Math.random() * AUDIOS.length);
 audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
-
-
-for (let i = 0; i < AUDIOS.length; ++i)
-{
-    const option = document.createElement("option");
-    option.value = i.toString();
-    option.textContent = AUDIOS[i].title + ` (${AUDIOS[i].year})`;
-
-    if (i === songIndex) option.setAttribute("selected", "");
-
-    nowPlayingSelect.appendChild(option);
-}
-
-nowPlayingSelect.addEventListener("change", () =>
-{
-    songIndex = nowPlayingSelect.value;
-
-    const newAudio = AUDIOS[songIndex];
-    audio.src = AUDIO_PATH + newAudio.file;
-
-    audio.play().then(() =>
-    {
-        nowPlayingSelect.value = songIndex;
-    });
-});
 
 
 function playOrPause()
@@ -144,7 +119,8 @@ function playOrPause()
     {
         audio.play().then(() =>
         {
-            nowPlayingSelect.value = songIndex;
+            const currentAudio = AUDIOS[songIndex];
+            nowPlaying.textContent = TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`;
         });
     }
     else
@@ -162,6 +138,7 @@ function skipBackwardsOrForward(isBackward)
 
 function prevOrNextSong(isPrev)
 {
+    nowPlaying.textContent = "";
     songIndex += isPrev ? -1 : 1;
 
     if (songIndex < 0)
@@ -173,7 +150,7 @@ function prevOrNextSong(isPrev)
     audio.src = AUDIO_PATH + currentAudio.file;
     audio.play().then(() =>
     {
-        nowPlayingSelect.value = songIndex;
+        nowPlaying.textContent = TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`;
     });
 }
 playPauseButton.addEventListener("click", () => playOrPause());
