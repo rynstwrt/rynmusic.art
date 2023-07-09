@@ -87,18 +87,17 @@ let canvasContext;
 let context = undefined;
 let analyser;
 const barWidth = 2;
-const audio = new Audio();
-audio.id = "audio-player";
+// const audio = new Audio();
+// audio.id = "audio-player";
+// let songIndex = Math.floor(Math.random() * AUDIOS.length);
+// audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 let songIndex = Math.floor(Math.random() * AUDIOS.length);
-audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
-
-
-
+const audio = new Audio(AUDIO_PATH + AUDIOS[songIndex].file);
+audio.id = "audio-player";
 audio.addEventListener("canplay", () =>
 {
     console.log("can play")
 })
-
 
 
 function playOrPause()
