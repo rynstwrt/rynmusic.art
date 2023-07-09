@@ -93,6 +93,14 @@ let songIndex = Math.floor(Math.random() * AUDIOS.length);
 audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
 
 
+
+audio.addEventListener("canplay", () =>
+{
+    console.log("can play")
+})
+
+
+
 function playOrPause()
 {
     const toggleableElements = document.querySelectorAll(".toggleable");
