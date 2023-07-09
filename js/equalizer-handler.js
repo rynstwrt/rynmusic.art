@@ -81,23 +81,14 @@ const nowPlaying = document.querySelector("#now-playing");
 const sliderContainer = document.querySelector("#progress-bar");
 const slider = document.querySelector("#progress-slider");
 
-
 let canvas;
 let canvasContext;
 let context = undefined;
 let analyser;
 const barWidth = 2;
-// const audio = new Audio();
-// audio.id = "audio-player";
-// let songIndex = Math.floor(Math.random() * AUDIOS.length);
-// audio.src = AUDIO_PATH + AUDIOS[songIndex].file;
-let songIndex = Math.floor(Math.random() * AUDIOS.length);
-const audio = new Audio(AUDIO_PATH + AUDIOS[songIndex].file);
-audio.id = "audio-player";
-audio.addEventListener("canplay", () =>
-{
-    console.log("can play")
-})
+
+let songIndex;
+let audio;
 
 
 function playOrPause()
@@ -126,6 +117,7 @@ function playOrPause()
     {
         audio.play().then(() =>
         {
+            console.log("now playing");
             const currentAudio = AUDIOS[songIndex];
             nowPlaying.textContent = TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`;
         });
@@ -192,6 +184,10 @@ sliderContainer.addEventListener("click", event =>
 
 window.addEventListener("load", () =>
 {
+    songIndex = Math.floor(Math.random() * AUDIOS.length);
+    audio = new Audio(AUDIO_PATH + AUDIOS[songIndex].file);
+    audio.id = "audio-player";
+
     document.getElementById("eq-audio").appendChild(audio);
 
     canvas = document.getElementById("eq-canvas");
@@ -209,6 +205,8 @@ window.addEventListener("load", () =>
 
             source.connect(analyser);
             analyser.connect(context.destination);
+
+            console.log("set up");
         }
 
         animate();
