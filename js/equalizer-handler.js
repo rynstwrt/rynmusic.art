@@ -63,6 +63,21 @@ const AUDIOS = [
         title: "I'm Gonna Dish You Right Now!",
         year: "2023"
     },
+    {
+        file: "Growing.mp3",
+        title: "Growing",
+        year: "2023"
+    },
+    {
+        file: "ICantBelieveThisHappened.mp3",
+        title: "I Can't Believe This Happened",
+        year: "2023"
+    },
+    {
+        file: "OnMyMind.mp3",
+        title: "On My Mind",
+        year: "2023"
+    }
 ];
 
 
