@@ -82,6 +82,11 @@ const AUDIOS = [
         file: "Amalgam.mp3",
         title: "Amalgam",
         year: "2023"
+    },
+    {
+        file: "WhatIfYouFly.mp3",
+        title: "What If You Fly?",
+        year: "2024"
     }
 ];
 
