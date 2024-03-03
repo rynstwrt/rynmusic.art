@@ -87,6 +87,21 @@ const AUDIOS = [
         file: "WhatIfYouFly.mp3",
         title: "What If You Fly?",
         year: "2024"
+    },
+    {
+        file: "ItMightBeGettingBetter.mp3",
+        title: "It (Might) Be Getting Better",
+        year: "2024"
+    },
+    {
+        file: "Recovery.mp3",
+        title: "Recovery",
+        year: "2024"
+    },
+    {
+        file: "ImPerfect.mp3",
+        title: "I'm Perfect!",
+        year: "2024"
     }
 ];
 
