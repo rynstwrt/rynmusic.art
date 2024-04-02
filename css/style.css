@@ -142,6 +142,9 @@ main #volume-container label svg {
   fill: #ffffff;
   stroke: #ffffff;
 }
+main #random-section {
+  padding-top: 10px;
+}
 main #controls {
   margin-top: 17px;
   display: flex;
@@ -151,6 +154,9 @@ main #controls {
 }
 main #controls #play-pause-button svg {
   width: 22px;
+}
+main #controls #shuffle-button svg, main #controls #loop-button svg {
+  width: 20px;
 }
 main #controls a {
   cursor: pointer;
