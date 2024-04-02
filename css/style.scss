@@ -221,7 +221,16 @@ main
 
         #shuffle-button, #loop-button
         {
-            svg {
+            &.pressed
+            {
+                svg
+                {
+                    fill: $color5;
+                }
+            }
+
+            svg
+            {
                 width: 20px;
             }
         }

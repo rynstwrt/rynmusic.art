@@ -155,6 +155,9 @@ main #controls {
 main #controls #play-pause-button svg {
   width: 22px;
 }
+main #controls #shuffle-button.pressed svg, main #controls #loop-button.pressed svg {
+  fill: #f84b15;
+}
 main #controls #shuffle-button svg, main #controls #loop-button svg {
   width: 20px;
 }
