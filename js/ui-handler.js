@@ -136,19 +136,29 @@ window.addEventListener("load", () =>
 
     document.getElementById("audio-player").onplay = () =>
     {
-        if (context === undefined)
-        {
-            context = new AudioContext();
-            analyser = context.createAnalyser();
+        context = new AudioContext();
+        analyser = context.createAnalyser();
 
-            canvasContext = canvas.getContext("2d");
-            const source = context.createMediaElementSource(audio);
+        canvasContext = canvas.getContext("2d");
+        const source = context.createMediaElementSource(audio);
 
-            source.connect(analyser);
-            analyser.connect(context.destination);
+        source.connect(analyser);
+        analyser.connect(context.destination);
 
-            console.log("set up");
-        }
+        console.log("set up");
+        // if (context === undefined)
+        // {
+        //     context = new AudioContext();
+        //     analyser = context.createAnalyser();
+        //
+        //     canvasContext = canvas.getContext("2d");
+        //     const source = context.createMediaElementSource(audio);
+        //
+        //     source.connect(analyser);
+        //     analyser.connect(context.destination);
+        //
+        //     console.log("set up");
+        // }
 
         animate();
     }
